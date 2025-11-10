@@ -13,40 +13,35 @@ spec:
       - list:
           elements:
           - env: devl
-            cluster: https://kubernetes.default.svc  # Update with actual cluster URLs
+            cluster: https://kubernetes.default.svc
           - env: test
             cluster: https://kubernetes.default.svc
           - env: prod
             cluster: https://kubernetes.default.svc
       # Second generator: Read apps from config file
       - git:
-          repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap  # Your new repo
+          repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap
           revision: main
           files:
           - path: "apps-config.yaml"
   template:
     metadata:
-      name: '{{.apps.name}}-{{.env}}'
+      name: '{{.name}}-{{.env}}'
       labels:
-        app: '{{.apps.name}}'
+        app: '{{.name}}'
         environment: '{{.env}}'
     spec:
       project: default
       source:
-        repoURL: '{{.apps.repo}}'
-        targetRevision: main  # or HEAD, or specific branch
-        path: '{{.apps.path}}/{{.env}}'  # This creates: overlays/devl, overlays/test, overlays/prod
+        repoURL: '{{.repo}}'
+        targetRevision: main
+        path: '{{.path}}/{{.env}}'
       destination:
         server: '{{.cluster}}'
-        namespace: '{{.apps.namespace}}-{{.env}}'  # Creates: frontend-devl, frontend-test, frontend-prod
+        namespace: '{{.namespace}}-{{.env}}'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
-      ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        jsonPointers:
-        - /spec/replicas  # Optional: ignore replica count differences
