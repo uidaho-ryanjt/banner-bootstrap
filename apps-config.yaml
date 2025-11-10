@@ -30,3 +30,7 @@
   repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/student-self-service
   manifests_path: src/kubernetes/overlays
   namespace: banner-
+- name: cluster-support
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/cluster-support
+  mainifests_path: src/kubernetes/overlays
+  namespace: banner-
