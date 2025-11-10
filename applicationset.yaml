@@ -13,7 +13,7 @@ spec:
           elements:
           - env: devl
             cluster: https://kubernetes.default.svc
-            targetRevision: sprint/sprint-25
+            targetRevision: sprint/*
           - env: test
             cluster: https://kubernetes.default.svc
             targetRevision: test
