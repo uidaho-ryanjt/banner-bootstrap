@@ -9,18 +9,19 @@ spec:
   generators:
   - matrix:
       generators:
-      # First generator: List of environments
       - list:
           elements:
           - env: devl
             cluster: https://kubernetes.default.svc
+            targetRevision: sprint/sprint-25
           - env: test
             cluster: https://kubernetes.default.svc
+            targetRevision: test
           - env: prod
             cluster: https://kubernetes.default.svc
-      # Second generator: Read apps from config file
+            targetRevision: prod
       - git:
-          repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap
+          repoURL: https://dev.azure.com/YOUR-ORG/YOUR-PROJECT/_git/argocd-bootstrap
           revision: main
           files:
           - path: "apps-config.yaml"
@@ -34,8 +35,8 @@ spec:
       project: default
       source:
         repoURL: '{{.repo}}'
-        targetRevision: main
-        path: '{{.manifests_path}}/{{.env}}'  # Changed from {{.path}}/{{.env}}
+        targetRevision: '{{.targetRevision}}'
+        path: '{{.manifests_path}}/{{.env}}'  # This will become: src/kubernetes/overlay/devl
       destination:
         server: '{{.cluster}}'
         namespace: '{{.namespace}}-{{.env}}'
