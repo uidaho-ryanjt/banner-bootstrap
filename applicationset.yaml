@@ -24,7 +24,7 @@ spec:
           - path: "apps-config.yaml"
   template:
     metadata:
-      name: '{{.name}}'
+      name: '{{.name}}-{{.env}}'
       labels:
         app: '{{.name}}'
         environment: '{{.env}}'
