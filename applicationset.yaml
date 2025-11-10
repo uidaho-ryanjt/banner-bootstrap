@@ -17,7 +17,7 @@ spec:
           - env: test
             cluster: https://kubernetes.default.svc
             targetRevision: test
-          - env: main
+          - env: prod
             cluster: https://kubernetes.default.svc
             targetRevision: HEAD
       - git:
