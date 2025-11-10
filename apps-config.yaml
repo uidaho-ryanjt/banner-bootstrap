@@ -1,8 +1,8 @@
 - name: application-navigator
   repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/application-navigator
-  manifest_path: overlays
+  manifests_path: overlays
   namespace: banner-
 - name: banner-8
   repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-8
-  path: overlays
+  manifests_path: overlays
   namespace: banner-
