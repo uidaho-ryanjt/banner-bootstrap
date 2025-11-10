@@ -14,9 +14,6 @@ spec:
           - env: devl
             cluster: https://kubernetes.default.svc
             targetRevision: sprint/2025q4
-          - env: test
-            cluster: https://kubernetes.default.svc
-            targetRevision: test
       - git:
           repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap
           revision: main
