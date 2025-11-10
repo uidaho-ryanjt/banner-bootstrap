@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: all-applications
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - matrix:
+      generators:
+      # First generator: List of environments
+      - list:
+          elements:
+          - env: devl
+            cluster: https://kubernetes.default.svc  # Update with actual cluster URLs
+          - env: test
+            cluster: https://kubernetes.default.svc
+          - env: prod
+            cluster: https://kubernetes.default.svc
+      # Second generator: Read apps from config file
+      - git:
+          repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap  # Your new repo
+          revision: main
+          files:
+          - path: "apps-config.yaml"
+  template:
+    metadata:
+      name: '{{.apps.name}}-{{.env}}'
+      labels:
+        app: '{{.apps.name}}'
+        environment: '{{.env}}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{.apps.repo}}'
+        targetRevision: main  # or HEAD, or specific branch
+        path: '{{.apps.path}}/{{.env}}'  # This creates: overlays/devl, overlays/test, overlays/prod
+      destination:
+        server: '{{.cluster}}'
+        namespace: '{{.apps.namespace}}-{{.env}}'  # Creates: frontend-devl, frontend-test, frontend-prod
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        jsonPointers:
+        - /spec/replicas  # Optional: ignore replica count differences
