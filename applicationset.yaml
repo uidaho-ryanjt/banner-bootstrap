@@ -20,7 +20,7 @@ spec:
             cluster: https://kubernetes.default.svc
       # Second generator: Read apps from config file
       - git:
-          repoURL: https://dev.azure.com/YOUR-ORG/YOUR-PROJECT/_git/argocd-bootstrap
+          repoURL: https://github.com/uidaho-ryanjt/banner-bootstrap
           revision: main
           files:
           - path: "apps-config.yaml"
