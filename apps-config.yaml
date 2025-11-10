@@ -14,8 +14,8 @@
   repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-access-management
   manifests_path: src/kubernetes/overlays
   namespace: banner-
-- name: banner-admin-api
-  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-admin-api
+- name: banner-admin-bpapi
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-admin-bpapi
   manifests_path: src/kubernetes/overlays
   namespace: banner-
 - name: banner-event-publisher
