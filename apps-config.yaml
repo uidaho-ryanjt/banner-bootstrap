@@ -10,3 +10,23 @@
   repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-admin
   manifests_path: src/kubernetes/overlays
   namespace: banner-
+- name: banner-access-management
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-access-management
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+- name: banner-admin-api
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-admin-api
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+- name: banner-event-publisher
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-event-publisher
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+- name: employee-self-service
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/employee-self-service
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+- name: student-self-service
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/student-self-service
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
