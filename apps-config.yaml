@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apps:
   - name: application-navigator
     repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/application-navigator
@@ -11,3 +12,13 @@ apps:
     repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-admin
     manifests_path: src/kubernetes/overlays
     namespace: banner-
+=======
+- name: application-navigator
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/application-navigator
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+- name: banner-8
+  repo: https://uidaho@dev.azure.com/uidaho/Banner-Cluster/_git/banner-8
+  manifests_path: src/kubernetes/overlays
+  namespace: banner-
+>>>>>>> a926cc07ffa4a1340c6bd9d46a5d122a19d49b7d
