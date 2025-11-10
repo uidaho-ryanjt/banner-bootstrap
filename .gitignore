@@ -1,0 +1,9 @@
+# Config files with secrets
+config.sh
+*.env
+.env
+*.secret
+
+# Temporary files
+.temp/
+*.json

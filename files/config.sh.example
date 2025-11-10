@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ADO_BASE_URL="https://dev.azure.com/uidaho"
+ADO_ACCESSTOKEN="YOUR-PERSONAL-ACCESS-TOKEN-HERE"
+ADO_PROJECTS_TO_SEARCH=("Banner-Cluster")
+ADO_REPO_URL_PART="_apis/git/repositories?api-version=7.0"
+
+OUTPUT_FILE="../apps-config.yaml"  # ← Changed to parent directory
+MANIFESTS_PATH="src/kubernetes/overlays"
+NAMESPACE_PREFIX="banner-"
+EXCLUDE_REPOS="argocd-bootstrap terraform-configs documentation banner-bootstrap"
+DEBUG="false"
+CLEANUP_TEMP="true"
